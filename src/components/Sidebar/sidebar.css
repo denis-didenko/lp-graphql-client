@@ -1,0 +1,33 @@
+aside {
+  background: #222c3c;
+  grid-row: 1 / -1;
+  padding: 25px 30px;
+  color: #b7c0cd;
+}
+
+.sidebar-title {
+  font-size: 12px;
+  color: #7f8fa4;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+aside nav {
+  margin: 0 -30px 35px;
+}
+
+aside nav li a {
+  display: block;
+  padding: 10px 0 10px 30px;
+  color: #b7c0cd;
+  text-decoration: none;
+}
+
+aside nav li a:hover {
+  color: #fff;
+}
+
+aside nav li a.active {
+  background-color: #1d2531;
+  box-shadow: inset 3px 0 0 0 #00a8ff;
+}

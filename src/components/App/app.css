@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+
+:root {
+  --font: 'Source Sans Pro', sans-serif;
+  --btn-bg: #2ea1f8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+:focus {
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #eff3f6;
+  font-family: var(--font);
+  font-size: 14px;
+  color: #354052;
+}
+
+a {
+  color: #2ea1f8;
+  transition: all 0.2s;
+}
+
+input,
+select,
+textarea {
+  background: #fff;
+  font-family: var(--font);
+  font-size: 14px;
+  width: 100%;
+  padding: 5px;
+  border: 2px solid #e6eaee;
+  border-radius: 4px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #2ea1f8;
+}
+
+button,
+.btn {
+  background: var(--btn-bg);
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #1a91eb;
+  border-radius: 4px;
+  color: #fff;
+  font-family: var(--font);
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+button:hover,
+.btn:hover {
+  opacity: 0.8;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 245px 1fr;
+  grid-template-rows: 70px 1fr;
+  height: 100%;
+}
+
+header {
+  background: #fff;
+  padding: 13px 30px;
+  border-bottom: 2px solid #e6eaee;
+  display: flex;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #354052;
+}
+
+main {
+  padding: 30px 15px;
+}
+
+table {
+  width: 100%;
+  background: #fff;
+  border: 2px solid #e6eaee;
+  border-radius: 4px;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table th {
+  background: #f5f8fa;
+  padding: 10px 20px;
+  font-weight: 500;
+  color: #7f8fa4;
+  text-align: left;
+}
+
+table td {
+  background: #fff;
+  padding: 10px 20px;
+  border-top: 1px solid #e6eaee;
+}
+
+table .btn {
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.react-tabs {
+  background: #fff;
+  border: 2px solid #e6eaee;
+  border-radius: 4px;
+}
+
+.react-tabs__tab-list {
+  border-bottom: 1px solid #e6eaee;
+}
+
+.react-tabs__tab-list li {
+  display: inline-block;
+  padding: 20px 0;
+  margin: 0 20px;
+  font-size: 16px;
+  color: #7f8fa4;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.react-tabs__tab-list li.react-tabs__tab--selected {
+  font-weight: 600;
+  color: #2d3848;
+  border-bottom-color: #2ea1f8;
+}
+
+.react-tabs__tab-list li:hover {
+  color: #2d3848;
+}
+
+.react-tabs__tab-panel {
+  display: none;
+  padding: 15px 20px;
+}
+
+.react-tabs__tab-panel.react-tabs__tab-panel--selected {
+  display: block;
+}
+
+.react-tabs__tab-panel table {
+  border: none;
+}
