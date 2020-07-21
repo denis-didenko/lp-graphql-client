@@ -1,4 +1,4 @@
-import { gql } from 'apollo-boost';
+import { gql } from '@apollo/client';
 
 export const GET_LPS_BY_IDS = gql`
     query Lps($ids: [ID]) {

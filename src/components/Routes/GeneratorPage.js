@@ -1,13 +1,13 @@
 import React from 'react';
-import UseLayout from '../Hooks/useLayout';
+import WithLayout from '../Containers/withLayout';
 import GeneratorUrls from '../GeneratorUrls';
 
 const GeneratorPage = () => {
-  return (
-    <UseLayout title="URLs from IDs">
-      <GeneratorUrls />
-    </UseLayout>
-  );
+    return (
+        <WithLayout title="URLs from IDs">
+            <GeneratorUrls />
+        </WithLayout>
+    );
 };
 
 export default GeneratorPage;

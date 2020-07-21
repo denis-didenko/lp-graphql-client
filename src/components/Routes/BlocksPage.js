@@ -1,13 +1,13 @@
 import React from 'react';
-import UseLayout from '../Hooks/useLayout';
+import WithLayout from '../Containers/withLayout';
 import BlocksList from '../BlockList';
 
 const BlocksPage = () => {
-  return (
-    <UseLayout title="Blocks list">
-      <BlocksList />
-    </UseLayout>
-  );
+    return (
+        <WithLayout title="Blocks list">
+            <BlocksList />
+        </WithLayout>
+    );
 };
 
 export default BlocksPage;

@@ -1,8 +1,8 @@
 import React from 'react';
-import UseLayout from '../Hooks/useLayout';
+import WithLayout from '../Containers/withLayout';
 
 const HomePage = () => {
-  return <UseLayout title="Home Page">Home Content</UseLayout>;
+    return <WithLayout title="Home Page">Home Content</WithLayout>;
 };
 
 export default HomePage;
