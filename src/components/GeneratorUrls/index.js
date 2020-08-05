@@ -1,28 +1,43 @@
 import React from 'react';
 
-import { useQuery } from '@apollo/client';
-import { GET_LPS_BY_IDS } from '../../gql/queryLpsById';
+import useValues from './useValues';
+import useFetch from './useFetch';
 
-import useIds from './useIds';
 import ResultsTable from './resultsTable';
 import './generator.css';
 
 const GeneratorUrls = () => {
-  const { ids, onChangeIds, fieldValue, onChangeField } = useIds();
-  const { data, error, loading } = useQuery(GET_LPS_BY_IDS, { variables: { ids } });
+    const { select, onChangeSelect, textarea, onChangeTextarea, values, onSubmitForm } = useValues();
+    const { data, error, loading } = useFetch(select, values);
 
-  if (error) return <p>Error</p>;
-  if (loading) return <p>Loading</p>;
+    if (error) return <p>Error</p>;
+    if (loading) return <p>Loading</p>;
 
-  return (
-    <form action="">
-      <textarea className="generator-field" value={fieldValue} onChange={onChangeField}></textarea>
-      <button className="generator-submit" type="submit" onClick={(e) => onChangeIds(e, fieldValue)}>
-        Submit
-      </button>
-      <ResultsTable ids={data.lpsByIds} />
-    </form>
-  );
+    const list = data.lpsByIds || data.lpsByNames || data.lpsByUrls;
+
+    return (
+        <>
+            <form action="">
+                <div className="form-item">
+                    <label>Filter by</label>
+                    <select className="generator-filter" value={select} onChange={onChangeSelect}>
+                        <option value="ids">Lid</option>
+                        <option value="names">Name</option>
+                        <option value="urls">Url</option>
+                    </select>
+                </div>
+                <div className="form-item">
+                    <label>List name/lid/url</label>
+                    <textarea className="generator-field" value={textarea} onChange={onChangeTextarea}></textarea>
+                </div>
+
+                <button className="generator-submit" type="submit" onClick={e => onSubmitForm(e, textarea)}>
+                    Submit
+                </button>
+            </form>
+            <ResultsTable list={list} />
+        </>
+    );
 };
 
 export default GeneratorUrls;
