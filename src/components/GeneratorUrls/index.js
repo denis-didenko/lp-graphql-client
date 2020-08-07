@@ -3,6 +3,7 @@ import React from 'react';
 import useValues from './useValues';
 import useFetch from './useFetch';
 
+import Loader from '../Loader';
 import ResultsTable from './resultsTable';
 import './generator.css';
 
@@ -10,8 +11,8 @@ const GeneratorUrls = () => {
     const { select, onChangeSelect, textarea, onChangeTextarea, values, onSubmitForm } = useValues();
     const { data, error, loading } = useFetch(select, values);
 
-    if (error) return <p>Error</p>;
-    if (loading) return <p>Loading</p>;
+    if (error) return <div>{String(error)}</div>;
+    if (loading) return <Loader />;
 
     const list = data.lpsByIds || data.lpsByNames || data.lpsByUrls;
 
