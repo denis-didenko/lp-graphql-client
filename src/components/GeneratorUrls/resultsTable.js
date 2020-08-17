@@ -3,7 +3,7 @@ import React from 'react';
 import { DOMAIN, ADMIN_PAGE, EDIT_PAGE, TESTING_PAGE, STATUS_PAGE, VIEW_PAGE, VIEW_PAGE_TESTING } from '../../config';
 
 const ResultsTable = ({ list = [] }) => {
-    if (!list.length) return <p>No found matches</p>;
+    if (!list || !list.length) return <p>No found matches</p>;
 
     function renderRows(rows) {
         return rows.map(({ lid, name }) => {

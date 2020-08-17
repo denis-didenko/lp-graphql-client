@@ -24,7 +24,8 @@ const GeneratorUrls = () => {
                     <select className="generator-filter" value={select} onChange={onChangeSelect}>
                         <option value="ids">Lid</option>
                         <option value="names">Name</option>
-                        <option value="urls">Url</option>
+                        <option value="urls-web">Url web</option>
+                        <option value="urls-mob">Url mob</option>
                     </select>
                 </div>
                 <div className="form-item">

@@ -8,19 +8,29 @@ function fetchReducer(state, action) {
         case 'ids':
             return {
                 queryName: GET_LPS_BY_IDS,
-                variable: 'ids',
+                queryVariable: 'ids',
+                platform: 'mob',
             };
 
         case 'names':
             return {
                 queryName: GET_LPS_BY_NAMES,
-                variable: 'names',
+                queryVariable: 'names',
+                platform: 'mob',
             };
 
-        case 'urls':
+        case 'urls-web':
             return {
                 queryName: GET_LPS_BY_URLS,
-                variable: 'urls',
+                queryVariable: 'urls',
+                platform: 'web',
+            };
+
+        case 'urls-mob':
+            return {
+                queryName: GET_LPS_BY_URLS,
+                queryVariable: 'urls',
+                platform: 'mob',
             };
 
         default:
@@ -31,9 +41,14 @@ function fetchReducer(state, action) {
 const useFetch = (name, values) => {
     const [state, dispatch] = useReducer(fetchReducer, {
         queryName: GET_LPS_BY_IDS,
-        variable: 'ids',
+        queryVariable: 'ids',
+        platform: 'mob',
     });
-    const { data, error, loading } = useQuery(state.queryName, { variables: { [state.variable]: values } });
+
+    //console.log('state.platform', state.platform);
+    const { data, error, loading } = useQuery(state.queryName, {
+        variables: { [state.queryVariable]: values, platform: state.platform },
+    });
 
     useEffect(() => {
         dispatch({ type: name });
