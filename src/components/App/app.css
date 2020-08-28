@@ -95,6 +95,10 @@ button:hover,
     margin-bottom: 5px;
 }
 
+form button {
+    width: 100%;
+}
+
 header {
     background: #fff;
     padding: 13px 30px;

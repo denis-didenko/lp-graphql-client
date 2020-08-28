@@ -35,3 +35,12 @@ export const GET_LPS_BY_URLS = gql`
         }
     }
 `;
+
+export const SAVE_SCREENSHOT = gql`
+    mutation SaveScreenshot($url: String!) {
+        saveScreenshot(url: $url) {
+            lid
+            name
+        }
+    }
+`;

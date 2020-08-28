@@ -45,7 +45,6 @@ const useFetch = (name, values) => {
         platform: 'mob',
     });
 
-    //console.log('state.platform', state.platform);
     const { data, error, loading } = useQuery(state.queryName, {
         variables: { [state.queryVariable]: values, platform: state.platform },
     });

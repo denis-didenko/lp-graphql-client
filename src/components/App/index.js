@@ -5,22 +5,24 @@ import Sidebar from '../Sidebar';
 import HomePage from '../Routes/HomePage';
 import GeneratorPage from '../Routes/GeneratorPage';
 import BlocksPage from '../Routes/BlocksPage';
+import ScreenshotsPage from '../Routes/ScreenshotsPage';
 
 import './app.css';
 
 const App = () => {
-  return (
-    <>
-      <aside>
-        <Sidebar />
-      </aside>
-      <Switch>
-        <Route path="/" exact component={HomePage} />
-        <Route path="/generator" component={GeneratorPage} />
-        <Route path="/blocks" component={BlocksPage} />
-      </Switch>
-    </>
-  );
+    return (
+        <>
+            <aside>
+                <Sidebar />
+            </aside>
+            <Switch>
+                <Route path="/" exact component={HomePage} />
+                <Route path="/generator" component={GeneratorPage} />
+                <Route path="/blocks" component={BlocksPage} />
+                <Route path="/screenshots" component={ScreenshotsPage} />
+            </Switch>
+        </>
+    );
 };
 
 export default App;
