@@ -4,7 +4,7 @@ import useValues from './useValues';
 import useFetch from './useFetch';
 
 import Loader from '../Loader';
-import ResultsTable from './resultsTable';
+import ResultsTable from './table';
 import './generator.css';
 
 const GeneratorUrls = () => {

@@ -1,13 +1,13 @@
 import React from 'react';
 
+import Loader from '../Loader';
+import useScreenshot from './useScreenshot';
 import { DOMAIN, ADMIN_PAGE, EDIT_PAGE, TESTING_PAGE, STATUS_PAGE, VIEW_PAGE, VIEW_PAGE_TESTING } from '../../config';
-
-function copy(data) {
-    const text = data.join('\n');
-    navigator.clipboard.writeText(text);
-}
+import { copy } from '../../utils';
 
 const ResultsTable = ({ list = [] }) => {
+    const { saveScreenshot, loading, error } = useScreenshot();
+
     if (!list || !list.length) return <p>No found matches</p>;
 
     const allPreviews = [];
@@ -16,10 +16,11 @@ const ResultsTable = ({ list = [] }) => {
         return rows.map(({ lid, name }) => {
             const adminLink = DOMAIN + ADMIN_PAGE + lid;
             const editLink = DOMAIN + EDIT_PAGE + lid;
-            const previewLink = 'https://www.benaughty.com' + VIEW_PAGE + name + VIEW_PAGE_TESTING;
+            const previewLink = 'https://www.benaughty.com' + VIEW_PAGE + name;
+            const previewTestLink = 'https://www.benaughty.com' + VIEW_PAGE + name + VIEW_PAGE_TESTING;
             const testLink = DOMAIN + STATUS_PAGE + lid + TESTING_PAGE;
 
-            allPreviews.push(previewLink);
+            allPreviews.push(previewTestLink);
 
             return (
                 <tr key={lid}>
@@ -36,7 +37,7 @@ const ResultsTable = ({ list = [] }) => {
                         </a>
                     </td>
                     <td>
-                        <a href={previewLink} className="btn" target="_blank" rel="noopener noreferrer">
+                        <a href={previewTestLink} className="btn" target="_blank" rel="noopener noreferrer">
                             preview
                         </a>
                     </td>
@@ -44,6 +45,15 @@ const ResultsTable = ({ list = [] }) => {
                         <a href={testLink} className="btn" target="_blank" rel="noopener noreferrer">
                             test
                         </a>
+                    </td>
+                    <td>
+                        {loading ? (
+                            <Loader />
+                        ) : (
+                            <button className="btn" onClick={e => saveScreenshot({ variables: { url: previewLink } })}>
+                                save screenshot
+                            </button>
+                        )}
                     </td>
                 </tr>
             );
@@ -60,6 +70,7 @@ const ResultsTable = ({ list = [] }) => {
                     <th>Edit</th>
                     <th>Preview</th>
                     <th>Testing</th>
+                    <th>Screenshot</th>
                 </tr>
             </thead>
 
@@ -71,10 +82,11 @@ const ResultsTable = ({ list = [] }) => {
                     <td></td>
                     <td></td>
                     <td>
-                        <button className="btn" onClick={copy(allPreviews)}>
+                        <button className="btn" onClick={() => copy(allPreviews)}>
                             copy ALL previews
                         </button>
                     </td>
+                    <td></td>
                     <td></td>
                 </tr>
             </tbody>

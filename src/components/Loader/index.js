@@ -6,6 +6,8 @@ function Loader() {
         <div className="loading">
             <div></div>
             <div></div>
+            <div></div>
+            <div></div>
         </div>
     );
 }

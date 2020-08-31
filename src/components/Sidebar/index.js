@@ -25,9 +25,6 @@ const Sidebar = () => {
                     <li>
                         <NavLink to="/blocks">Blocks list</NavLink>
                     </li>
-                    <li>
-                        <NavLink to="/screenshots">Screenshots</NavLink>
-                    </li>
                 </ul>
             </nav>
             <div className="sidebar-title">Managers</div>
