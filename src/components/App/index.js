@@ -1,26 +1,24 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-import Sidebar from '../Sidebar';
-import HomePage from '../Routes/HomePage';
-import GeneratorPage from '../Routes/GeneratorPage';
-import BlocksPage from '../Routes/BlocksPage';
+import Layout from '../Layout';
+
+import HomePage from '../../pages/HomePage';
+import GeneratorPage from '../../pages/GeneratorPage';
+import BlocksPage from '../../pages/BlocksPage';
 
 import './app.css';
 
 const App = () => {
-    return (
-        <>
-            <aside>
-                <Sidebar />
-            </aside>
-            <Switch>
-                <Route path="/" exact component={HomePage} />
-                <Route path="/generator" component={GeneratorPage} />
-                <Route path="/blocks" component={BlocksPage} />
-            </Switch>
-        </>
-    );
+	return (
+		<Layout>
+			<Routes>
+				<Route path='/' element={<HomePage />} />
+				<Route path='/generator' element={<GeneratorPage />} />
+				<Route path='/blocks' element={<BlocksPage />} />
+			</Routes>
+		</Layout>
+	);
 };
 
 export default App;

@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import Loader from "../Loader";
-import useScreenshot from "./useScreenshot";
-import { DOMAIN, ADMIN_PAGE, EDIT_PAGE, TESTING_PAGE, STATUS_PAGE, VIEW_PAGE, VIEW_PAGE_TESTING } from "../../config";
-import { copy } from "../../utils";
+import Loader from '../Loader';
+import useScreenshot from './useScreenshot';
+import { DOMAIN, ADMIN_PAGE, EDIT_PAGE, TESTING_PAGE, STATUS_PAGE, VIEW_PAGE, VIEW_PAGE_TESTING } from '../../config/index.js';
+import { copy } from '../../utils';
 
 const ResultsTable = ({ list = [] }) => {
 	const { saveScreenshot, loading, error } = useScreenshot();
@@ -13,10 +13,11 @@ const ResultsTable = ({ list = [] }) => {
 	const allPreviews = [];
 	const allNames = [];
 	const allTestingLinks = [];
+	const allEditLinks = [];
 
-	const sendAllToTesting = (links) => {
+	const openLpsInNewTabs = (links) => {
 		links.forEach((link) => {
-			window.open(link, "_blank");
+			window.open(link, '_blank');
 		});
 	};
 
@@ -24,34 +25,35 @@ const ResultsTable = ({ list = [] }) => {
 		return rows.map(({ lid, name }) => {
 			const adminLink = DOMAIN + ADMIN_PAGE + lid;
 			const editLink = DOMAIN + EDIT_PAGE + lid;
-			const previewTestLink = "https://m.youdates.com" + VIEW_PAGE + name + VIEW_PAGE_TESTING;
+			const previewTestLink = 'https://m.benaughty.com' + VIEW_PAGE + name + VIEW_PAGE_TESTING;
 			const testLink = DOMAIN + STATUS_PAGE + lid + TESTING_PAGE;
 
 			allPreviews.push(previewTestLink);
 			allNames.push(name);
 			allTestingLinks.push(testLink);
+			allEditLinks.push(editLink);
 
 			return (
 				<tr key={lid}>
 					<td>{lid}</td>
 					<td>{name}</td>
 					<td>
-						<a href={adminLink} className="btn" target="_blank" rel="noopener noreferrer">
+						<a href={adminLink} className='btn' target='_blank' rel='noopener noreferrer'>
 							admin
 						</a>
 					</td>
 					<td>
-						<a href={editLink} className="btn" target="_blank" rel="noopener noreferrer">
+						<a href={editLink} className='btn' target='_blank' rel='noopener noreferrer'>
 							edit
 						</a>
 					</td>
 					<td>
-						<a href={previewTestLink} className="btn" target="_blank" rel="noopener noreferrer">
+						<a href={previewTestLink} className='btn' target='_blank' rel='noopener noreferrer'>
 							preview
 						</a>
 					</td>
 					<td>
-						<a href={testLink} className="btn" target="_blank" rel="noopener noreferrer">
+						<a href={testLink} className='btn' target='_blank' rel='noopener noreferrer'>
 							test
 						</a>
 					</td>
@@ -59,7 +61,7 @@ const ResultsTable = ({ list = [] }) => {
 						{loading ? (
 							<Loader />
 						) : (
-							<button className="btn" onClick={(e) => saveScreenshot({ variables: { url: previewTestLink } })}>
+							<button className='btn' onClick={(e) => saveScreenshot({ variables: { url: previewTestLink } })}>
 								save screenshot
 							</button>
 						)}
@@ -88,19 +90,23 @@ const ResultsTable = ({ list = [] }) => {
 				<tr>
 					<td></td>
 					<td>
-						<button className="btn" onClick={() => copy(allNames)}>
+						<button className='btn' onClick={() => copy(allNames)}>
 							copy ALL names
 						</button>
 					</td>
 					<td></td>
-					<td></td>
 					<td>
-						<button className="btn" onClick={() => copy(allPreviews)}>
+						<button className='btn' onClick={() => openLpsInNewTabs(allEditLinks)}>
+							open ALL edit lps
+						</button>
+					</td>
+					<td>
+						<button className='btn' onClick={() => copy(allPreviews)}>
 							copy ALL previews
 						</button>
 					</td>
 					<td>
-						<button className="btn" onClick={() => sendAllToTesting(allTestingLinks)}>
+						<button className='btn' onClick={() => openLpsInNewTabs(allTestingLinks)}>
 							send ALL to testing
 						</button>
 					</td>
