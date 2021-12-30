@@ -1,7 +1,7 @@
 import { useReducer, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 
-import { GET_LPS_BY_IDS, GET_LPS_BY_NAMES, GET_LPS_BY_URLS } from '../../apollo/gql/queryLp';
+import { GET_LPS_BY_IDS, GET_LPS_BY_NAMES, GET_LPS_BY_URLS } from '../apollo/gql/queryLp';
 
 function fetchReducer(state, action) {
 	switch (action.type) {

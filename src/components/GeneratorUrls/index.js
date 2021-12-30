@@ -1,10 +1,10 @@
 import React from 'react';
 
-import useValues from './useValues';
-import useFetch from './useFetch';
+import useValues from '../../hooks/useValues';
+import useFetch from '../../hooks/useFetch';
 
 import Loader from '../Loader';
-import ResultsTable from './table';
+import ResultsTable from '../ResultsTable';
 import './generator.css';
 
 const GeneratorUrls = () => {

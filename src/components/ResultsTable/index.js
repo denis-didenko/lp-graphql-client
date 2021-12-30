@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Loader from '../Loader';
-import useScreenshot from './useScreenshot';
+import useScreenshot from '../../hooks/useScreenshot';
 import { DOMAIN, ADMIN_PAGE, EDIT_PAGE, TESTING_PAGE, STATUS_PAGE, VIEW_PAGE, VIEW_PAGE_TESTING } from '../../config/index.js';
 import { copy } from '../../utils';
 
